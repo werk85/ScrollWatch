@@ -171,7 +171,9 @@ var saveContainerElement = function() {
 
 	if (!isContainerWindow.call(this)) {
 
-		instanceData[this._id].config.container = document.querySelector(instanceData[this._id].config.container);
+		var container = instanceData[this._id].config.container;
+
+		instanceData[this._id].config.container = (typeof container === 'string' || container instanceof String) ? document.querySelector(container) : container;
 
 	}
 
